@@ -32,7 +32,7 @@ php artisan serve
 ![Image](https://github.com/user-attachments/assets/dbd84a80-2c64-4ee8-b65b-9a65a478f1a1)  
 
 ##  Categories:  
-![Image](https://github.com/user-attachments/assets/dbd84a80-2c64-4ee8-b65b-9a65a478f1a1)  
+![Image](https://github.com/user-attachments/assets/b9dc97b6-94c3-4b0d-8326-8dc10066a08e)
 
 ## Progucts:  
 ![Image](https://github.com/user-attachments/assets/c3d2b94a-bf3b-485d-86db-31852efef935)  
