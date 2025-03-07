@@ -7,5 +7,10 @@ This project is a clothing store website developed using Laravel. Users can brow
 🛍️ Product listing with category filtering  
 🛒 Add to cart and place orders  
 🔒 User authentication (login/register)   
-💳 Payment integration (optional)  
 📦 Order tracking  
+
+##  🛠 Technologies Used  
+Laravel 10+  
+MySQL  
+Bootstrap/Tailwind CSS  
+Blade Template Engine   
