@@ -27,3 +27,15 @@ npm install
 
 3- Start the development server:  
 php artisan serve  
+
+##  Home Page:  
+![Image](https://github.com/user-attachments/assets/dbd84a80-2c64-4ee8-b65b-9a65a478f1a1)  
+
+##  Categories:  
+![Image](https://github.com/user-attachments/assets/dbd84a80-2c64-4ee8-b65b-9a65a478f1a1)  
+
+## Progucts:  
+![Image](https://github.com/user-attachments/assets/c3d2b94a-bf3b-485d-86db-31852efef935)  
+
+![Image](https://github.com/user-attachments/assets/61bf367d-8433-462c-9b7c-e96adb1964f8)  
+
