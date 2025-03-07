@@ -14,3 +14,9 @@ Laravel 10+
 MySQL  
 Bootstrap/Tailwind CSS  
 Blade Template Engine   
+
+##  📥 Installation  
+Follow these steps to run the project:  
+
+Clone the repository:  git clone https://github.com/Faysal2000/ClothingStore-laravel.git
+cd ClothingStore-laravel
