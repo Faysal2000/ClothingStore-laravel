@@ -21,7 +21,9 @@ Follow these steps to run the project:
 1- Clone the repository:  git clone https://github.com/Faysal2000/ClothingStore-laravel.git  
 cd ClothingStore-laravel  
 
-2- Install dependencies:
+2- Install dependencies:  
 composer install  
 npm install  
 
+3- Start the development server:  
+php artisan serve  
