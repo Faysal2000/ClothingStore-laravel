@@ -22,11 +22,21 @@ Route::get('/', function () {
     return view('welcome', ['categories' => $result]);
 });
 
-Route::get('/product/{catid}', function ($catid) {
-    $result = DB::table('products')->where('category_id', $catid)->get();
 
-    return view('product', ['products' => $result]);
+
+Route::get('/product/{catid?}', function ($catid = null) {
+    b:
+    if ($catid == null) {
+        $result = DB::table('products')->get();
+        return view('product', ['products' => $result]);
+    } else {
+        $result = DB::table('products')->where('category_id', $catid)->get();
+        return view('product', ['products' => $result]);
+    }
 });
+
+
+
 
 
 
