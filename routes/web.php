@@ -1,45 +1,27 @@
 <?php
 
+use App\Http\Controllers\ContectController;
+use App\Http\Controllers\FirstController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
-
-use Illuminate\Support\Facades\DB;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
-Route::get('/', function () {
-
-    $result = DB::table('categories')->get();
-
-    return view('welcome', ['categories' => $result]);
-});
-
-
-
-Route::get('/product/{catid?}', function ($catid = null) {
-    b:
-    if ($catid == null) {
-        $result = DB::table('products')->get();
-        return view('product', ['products' => $result]);
-    } else {
-        $result = DB::table('products')->where('category_id', $catid)->get();
-        return view('product', ['products' => $result]);
-    }
-});
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Http\Request;
 
 
 
 
 
 
-Route::get('/category', function () {
-    return view('category');
-});
+Route::get('/', [FirstController::class, 'MainPage']);
+
+Route::get('/products/{catid?}', [FirstController::class, 'GetCategoryProducts']);
+
+
+Route::get('/category', [FirstController::class, 'GetAllCategoryWithProducts']);
+
+
+Route::get('/addproduct', [ProductController::class, 'Addproduct']);
+
+
+Route::post('/storeproduct', [ProductController::class, 'StoreProduct']);

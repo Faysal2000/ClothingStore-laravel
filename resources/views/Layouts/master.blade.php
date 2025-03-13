@@ -66,20 +66,20 @@
 
                                 </li>
 
-                                <li><a href="/product">Products</a>
+                                <li><a href="/products">Products</a>
 
                                 </li>
 
                                 </li>
+                                </li>
 
-                                <li><a href="#">Pages</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="404.html">404 page</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="news.html">News</a></li>
-                                        <li><a href="shop.html">Shop</a></li>
-                                    </ul>
+                                <li><a href="/addproduct">Add Product</a>
+
+                                </li>
+
+
+                                <li><a href="/category">Categories</a>
+
                                 </li>
                                 <li><a href="news.html">News</a>
                                     <ul class="sub-menu">
@@ -87,7 +87,7 @@
                                         <li><a href="single-news.html">Single News</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="/contact">Contact</a></li>
                                 <li><a href="shop.html">Shop</a>
                                     <ul class="sub-menu">
                                         <li><a href="shop.html">Shop</a></li>
