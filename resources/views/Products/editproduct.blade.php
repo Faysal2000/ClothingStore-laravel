@@ -24,7 +24,7 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">Product Name</label>
                                 <input type="text" required class="form-control" placeholder="Enter product name"
-                                    name="name" id="name" value="{{ old('name') }}">
+                                    name="name" id="name" value="{{ $product->name }}">
                                 <span class="text-danger">
                                     @error('name')
                                         {{ $message }}
@@ -36,7 +36,7 @@
                                 <div class="col-md-6">
                                     <label for="price" class="form-label">Price</label>
                                     <input type="number" required class="form-control" placeholder="Enter price"
-                                        name="price" id="price" value="{{ old('price') }}">
+                                        name="price" id="price" value="{{ $product->price }}">
                                     <span class="text-danger">
                                         @error('price')
                                             {{ $message }}
@@ -46,7 +46,7 @@
                                 <div class="col-md-6">
                                     <label for="quantity" class="form-label">Quantity</label>
                                     <input type="number" required class="form-control" placeholder="Enter quantity"
-                                        name="quantity" id="quantity" value="{{ old('quantity') }}">
+                                        name="quantity" id="quantity" value="{{ $product->quantity }}">
                                     <span class="text-danger">
                                         @error('quantity')
                                             {{ $message }}
@@ -58,15 +58,15 @@
                             <div class="mb-3">
                                 <label for="image" class="form-label">Upload Image</label>
                                 <input type="file" required class="form-control" name="image" id="image"
-                                    accept="image/*" value="{{ old('image') }}">
+                                    accept="image/*" value="{{ $product->image }}">
 
                             </div>
 
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea name="description" required id="description" class="form-control" rows="4"
-                                    placeholder="Enter product description">
-                                    value="{{ old('description') }}"
+                                    placeholder="Enter product description" value="{{ $product->description }}">
+                                    
                                 </textarea>
                                 <span class="text-danger">
                                     @error('description')
@@ -92,6 +92,8 @@
                                             {{ $message }}
                                         @enderror
                                     </span>
+                                    <img src="{{ asset($product->imagepath) }}" alt="">
+
                                 </div>
                             </div>
 
