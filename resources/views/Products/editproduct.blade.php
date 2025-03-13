@@ -74,7 +74,8 @@
                                     @enderror
                                 </span>
                             </div>
-
+                            <p><img src="{{ asset($product->imagepath) }}" alt="">
+                            </p>
 
                             <div class="mb-3">
                                 <label for="category" class="form-label fw-bold text-primary">Choose a Category</label>
@@ -92,9 +93,11 @@
                                             {{ $message }}
                                         @enderror
                                     </span>
-                                    <img src="{{ asset($product->imagepath) }}" alt="">
+
 
                                 </div>
+
+
                             </div>
 
 
