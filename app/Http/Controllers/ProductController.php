@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Contracts\View\View;
 
 class ProductController extends Controller
 {
@@ -44,5 +45,30 @@ class ProductController extends Controller
         $newProduct->save();
 
         return redirect('/');
+    }
+
+
+
+    public function EditProduct($productid)
+    {
+
+        $allcategories = Category::all();
+        $currantProduct = Product::find($productid);
+
+        return View('/Products.editproduct', ["product" => $currantProduct, 'allcategories' => $allcategories]);
+    }
+
+
+
+
+    public function RemoveProducts($productid = null)
+    {
+        if ($productid != null) {
+            $currantProduct = Product::find($productid);
+            $currantProduct->delete();
+            return redirect('/products');
+        } else {
+            abort(403, 'enter product id');
+        }
     }
 }

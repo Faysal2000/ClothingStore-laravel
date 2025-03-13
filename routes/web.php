@@ -21,7 +21,10 @@ Route::get('/products/{catid?}', [FirstController::class, 'GetCategoryProducts']
 Route::get('/category', [FirstController::class, 'GetAllCategoryWithProducts']);
 
 
-Route::get('/addproduct', [ProductController::class, 'Addproduct']);
 
+
+Route::get('/addproduct', [ProductController::class, 'Addproduct']);
+Route::get('/removeproduct/{productid?}', [ProductController::class, 'RemoveProducts']);
+Route::get('/editproduct/{productid?}', [ProductController::class, 'EditProduct']);
 
 Route::post('/storeproduct', [ProductController::class, 'StoreProduct']);
