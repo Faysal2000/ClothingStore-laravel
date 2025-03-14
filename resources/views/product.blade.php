@@ -18,12 +18,13 @@
                     <div class="col-lg-4 col-md-6 text-center">
                         <div class="single-product-item">
                             <div class="product-image">
-                                <a href="/product"><img src="{{ url($item->imagepath) }}"
+                                <a href="/products"><img src="{{ asset($item->imagepath) }}"
                                         style="max-height:400px;min-height:400px" alt=""></a>
                             </div>
                             <h3>{{ $item->name }}</h3>
                             <p class="product-price"><span>{{ $item->quantity }}</span> {{ $item->price }} $</p>
-                            <a href="/cart.html" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i>
+
+                            <a href="/cart/add/{id}" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i>
                                 Add to Cart
                             </a>
                             <a href="/editproduct/{{ $item->id }}" class="btn btn-outline-secondary"><i
@@ -32,10 +33,35 @@
 
                                 Edit
                             </a>
-                            <a href="/removeproduct/{{ $item->id }}" class="btn btn-outline-danger"><i
-                                    class="fas fa-trash"></i>
-                                Delete
+                            <a href="javascript:void(0);" class="btn btn-outline-danger delete-product"
+                                data-id="{{ $item->id }}">
+                                <i class="fas fa-trash"></i> Delete
                             </a>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    document.querySelectorAll('.delete-product').forEach(button => {
+                                        button.addEventListener('click', function() {
+                                            let productId = this.getAttribute('data-id');
+
+                                            Swal.fire({
+                                                title: "Are you sure?",
+                                                text: "You won't be able to revert this!",
+                                                icon: "warning",
+                                                showCancelButton: true,
+                                                confirmButtonColor: "#d33",
+                                                cancelButtonColor: "#3085d6",
+                                                confirmButtonText: "Yes, delete it!"
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.href = "/removeproduct/" + productId;
+                                                }
+                                            });
+                                        });
+                                    });
+                                });
+                            </script>
+
+
 
                         </div>
                     </div>

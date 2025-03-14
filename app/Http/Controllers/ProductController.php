@@ -22,7 +22,6 @@ class ProductController extends Controller
     public function StoreProduct(Request $request)
     {
 
-
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
@@ -32,30 +31,49 @@ class ProductController extends Controller
         ]);
 
 
+        // حفظ القيم الجديدة بعد التعديل
+        if ($request->id) {
+            $currantProduct = Product::find($request->id);
+            $currantProduct->name = $request->name;
+            $currantProduct->price = $request->price;
+            $currantProduct->quantity = $request->quantity;
+            $currantProduct->description = $request->description;
+            $currantProduct->imagepath = $request->imagepath;
+            $currantProduct->category_id = $request->category_id;
+            $currantProduct->save();
+
+            return redirect('/products');
+        } else {
 
 
-        $newProduct = new Product();
-        $newProduct->name = $request->name;
-        $newProduct->price = $request->price;
-        $newProduct->quantity = $request->quantity;
-        $newProduct->imagepath = $request->imagepath;
-        $newProduct->descrition = $request->description;
-        $newProduct->category_id = $request->category_id;
 
-        $newProduct->save();
+            //اضافة منتج جديد
+            $newProduct = new Product();
+            $newProduct->name = $request->name;
+            $newProduct->price = $request->price;
+            $newProduct->quantity = $request->quantity;
+            $newProduct->imagepath = $request->imagepath;
+            $newProduct->descrition = $request->description;
+            $newProduct->category_id = $request->category_id;
 
-        return redirect('/');
+            $newProduct->save();
+
+            return redirect('/');
+        }
     }
 
 
-
-    public function EditProduct($productid)
+    public function EditProduct($productid = null)
     {
+        if ($productid != null) {
 
-        $allcategories = Category::all();
-        $currantProduct = Product::find($productid);
+            $currantProduct = Product::find($productid);
+            $allcategories = Category::all();
 
-        return View('/Products.editproduct', ["product" => $currantProduct, 'allcategories' => $allcategories]);
+            return View('Products.editproduct', ["product" => $currantProduct, 'allcategories' => $allcategories]);
+        } else {
+            return redirect('/addproduct');
+        }
     }
 
 

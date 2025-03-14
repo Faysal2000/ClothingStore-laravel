@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\ContectController;
 use App\Http\Controllers\FirstController;
 use App\Http\Controllers\ProductController;

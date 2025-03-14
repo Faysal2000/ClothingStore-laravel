@@ -21,6 +21,8 @@
                     <div class="contact-form">
                         <form method="post" action="{{ url('/storeproduct') }}">
                             @csrf()
+                            <input type="hidden" style="width:100%" required placeholder="" name="id" id="id"
+                                value=" {{ $product->id }}">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Product Name</label>
                                 <input type="text" required class="form-control" placeholder="Enter product name"
@@ -74,7 +76,7 @@
                                     @enderror
                                 </span>
                             </div>
-                            <p><img src="{{ asset($product->imagepath) }}" alt="">
+                            <p><img src="{{ asset($product->imagepath) }}" width="300" height="400" alt="">
                             </p>
 
                             <div class="mb-3">
@@ -82,23 +84,25 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fas fa-list-alt"></i></span>
                                     <select class="form-select border-primary shadow-sm" required name="category_id"
-                                        id="category_id" required>
+                                        id="category_id">
                                         <option value="" disabled selected>-- Select a category --</option>
+
                                         @foreach ($allcategories as $item)
-                                            <option value="{{ $item->id }}">{{ ucfirst($item->name) }}</option>
+                                            <option value="{{ $item->id }}"
+                                                @if (isset($product) && $item->id == $product->category_id) selected @endif>
+                                                {{ ucfirst($item->name) }}
+                                            </option>
                                         @endforeach
                                     </select>
+
                                     <span class="text-danger">
                                         @error('category_id')
                                             {{ $message }}
                                         @enderror
                                     </span>
-
-
                                 </div>
-
-
                             </div>
+
 
 
 
