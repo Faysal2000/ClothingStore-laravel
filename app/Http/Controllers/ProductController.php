@@ -40,8 +40,8 @@ class ProductController extends Controller
             $currantProduct->description = $request->description;
             $currantProduct->imagepath = $request->imagepath;
             $currantProduct->category_id = $request->category_id;
-            $currantProduct->save();
 
+            $currantProduct->save();
             return redirect('/products');
         } else {
 
@@ -58,17 +58,22 @@ class ProductController extends Controller
 
             $newProduct->save();
 
-            return redirect('/');
+            return redirect('/products');
         }
     }
 
 
     public function EditProduct($productid = null)
     {
+
         if ($productid != null) {
 
             $currantProduct = Product::find($productid);
+            if ($currantProduct == null) {
+                abort("403", "Cant Find This Product");
+            }
             $allcategories = Category::all();
+
 
             return View('Products.editproduct', ["product" => $currantProduct, 'allcategories' => $allcategories]);
         } else {

@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
-
-
+use App\Models\Review;
 
 class FirstController extends Controller
 {
@@ -19,6 +18,14 @@ class FirstController extends Controller
         $categories = Category::all();
         return view('welcome', ['categories' => $categories]);
     }
+
+
+    public function reviews()
+    {
+        $reviews = Review::all();
+        return view('reviews', ['reviews' => $reviews]); //
+    }
+
 
     public function GetCategoryProducts($catid = null)
     {

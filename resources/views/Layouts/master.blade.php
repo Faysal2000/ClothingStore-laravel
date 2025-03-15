@@ -67,6 +67,9 @@
                                 <li class="current-list-item"><a href="/">Home</a>
 
                                 </li>
+                                <li><a href="/category">Categories</a>
+
+                                </li>
 
                                 <li><a href="/products">Products</a>
 
@@ -80,25 +83,11 @@
                                 </li>
 
 
-                                <li><a href="/category">Categories</a>
+                                <li><a href="/reviews">Reviews</a></li>
 
-                                </li>
-                                <li><a href="news.html">News</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="news.html">News</a></li>
-                                        <li><a href="single-news.html">Single News</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/contact">Contact</a></li>
-                                <li><a href="shop.html">Shop</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="checkout.html">Check Out</a></li>
-                                        <li><a href="single-product.html">Single Product</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                    </ul>
-                                </li>
                                 <li>
+
+
                                     <div class="header-icons">
                                         <a class="shopping-cart" href="cart.html"><i
                                                 class="fas fa-shopping-cart"></i></a>
@@ -150,7 +139,7 @@
                                 <h1>Shop the latest fashion trends now</h1>
                                 <div class="hero-btns">
                                     <a href="shop.html" class="boxed-btn">Fruit Collection</a>
-                                    <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                    <a href="/contact" class="bordered-btn">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -169,7 +158,7 @@
                                 <h1>because you deserve the best!</h1>
                                 <div class="hero-btns">
                                     <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                    <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                    <a href="/contact" class="bordered-btn">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +177,7 @@
                                 <h1>Discounts up to 50%!</h1>
                                 <div class="hero-btns">
                                     <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                    <a href="contact.html" class="bordered-btn">Contact Us</a>
+                                    <a href="/contact" class="bordered-btn">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -234,14 +223,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-box pages">
-                        <h2 class="widget-title">Pages</h2>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/">About</a></li>
-                            <li><a href="/product">Shop</a></li>
-                            <li><a href="/">News</a></li>
-                            <li><a href="/">Contact</a></li>
-                        </ul>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">

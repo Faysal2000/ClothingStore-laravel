@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\AddToCartController;
-use App\Http\Controllers\ContectController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\FirstController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -30,3 +31,10 @@ Route::get('/removeproduct/{productid?}', [ProductController::class, 'RemoveProd
 Route::get('/editproduct/{productid?}', [ProductController::class, 'EditProduct']);
 
 Route::post('/storeproduct', [ProductController::class, 'StoreProduct']);
+
+
+
+
+
+Route::get('/reviews', [FirstController::class, 'reviews']);
+//Route::get('/contact}', [ContactController::class, 'store'])->name('contact.store');
