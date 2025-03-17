@@ -19,7 +19,7 @@
                     </div>
                     <div id="form_status"></div>
                     <div class="contact-form">
-                        <form method="post" action="{{ url('/storeproduct') }}">
+                        <form method="post" enctype="multipart/form-data" action="{{ url('/storeproduct') }}">
                             @csrf()
                             <div class="mb-3">
                                 <label for="name" class="form-label">Product Name</label>
@@ -57,7 +57,7 @@
 
                             <div class="mb-3">
                                 <label for="image" class="form-label">Upload Image</label>
-                                <input type="file" required class="form-control" name="image" id="image"
+                                <input type="file" required class="form-control-file" name="photo" id="photo "
                                     accept="image/*" value="{{ old('image') }}">
 
                             </div>

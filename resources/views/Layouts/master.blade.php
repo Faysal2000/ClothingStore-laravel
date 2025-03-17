@@ -116,8 +116,11 @@
                     <div class="search-bar">
                         <div class="search-bar-tablecell">
                             <h3>Search For:</h3>
-                            <input type="text" placeholder="Keywords">
-                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                            <form method="POST" action="/search">
+                                @csrf
+                                <input type="text" name="searchkey" placeholder="Keywords">
+                                <button type="submit">Search <i class="fas fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>

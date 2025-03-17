@@ -25,16 +25,27 @@ Route::get('/category', [FirstController::class, 'GetAllCategoryWithProducts']);
 
 
 
-
+//اضافة منتج
 Route::get('/addproduct', [ProductController::class, 'Addproduct']);
-Route::get('/removeproduct/{productid?}', [ProductController::class, 'RemoveProducts']);
-Route::get('/editproduct/{productid?}', [ProductController::class, 'EditProduct']);
 
+//جذف منتج
+Route::get('/removeproduct/{productid?}', [ProductController::class, 'RemoveProducts']);
+//تعديل منتج
+Route::get('/editproduct/{productid?}', [ProductController::class, 'EditProduct']);
+//عرض منتج
 Route::post('/storeproduct', [ProductController::class, 'StoreProduct']);
 
 
 
 
-
+//اراء العملاء
 Route::get('/reviews', [FirstController::class, 'reviews']);
-//Route::get('/contact}', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/storeReview', [FirstController::class, 'storeReview']);
+
+
+
+//جلب المنتجات في عملية البحث
+Route::post('/search', function (Request $request) {
+    $products = Product::where('name', 'like', '%' . $request->searchkey . '%')->get();
+    return view('product', ['products' => $products]);
+});

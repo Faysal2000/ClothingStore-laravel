@@ -58,7 +58,7 @@
         <!-- Submit a Review -->
         <div class="card mt-4 p-4 shadow-sm">
             <h4 class="text-secondary">Write a Review</h4>
-            <form method="POST" action="/storereview">
+            <form method="post" action="/storeReview">
                 @csrf
 
                 <div class="mb-3">

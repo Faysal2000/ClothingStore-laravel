@@ -27,6 +27,31 @@ class FirstController extends Controller
     }
 
 
+    public function storeReview(Request $request)
+    {
+
+
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'subject' => 'required|string|max:1000',
+            'message' => 'required|string|max:1000',
+
+        ]);
+
+        $newReviw =  new Review();
+        $newReviw->name = $request->name;
+        $newReviw->subject = $request->subject;
+        $newReviw->message = $request->message;
+
+
+        $newReviw->save();
+        return redirect('/reviews');
+    }
+
+
+
+
     public function GetCategoryProducts($catid = null)
     {
         if ($catid) {
