@@ -10,6 +10,8 @@ use Illuminate\Contracts\View\View;
 
 class ProductController extends Controller
 {
+
+
     public function Addproduct()
     {
         $allcategories = Category::all();
@@ -26,7 +28,7 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagepath' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
         ]);
 
@@ -52,9 +54,19 @@ class ProductController extends Controller
             $newProduct->name = $request->name;
             $newProduct->price = $request->price;
             $newProduct->quantity = $request->quantity;
-            $newProduct->imagepath = $request->imagepath;
             $newProduct->descrition = $request->description;
             $newProduct->category_id = $request->category_id;
+
+
+
+
+
+            //تحميل الصور الى المجلد في المسار المحدد
+            $path =   $request->photo->move('uploads', string::uuid()->toString() . '-' . $request->photo->getClientOriginalName());
+
+
+            $newProduct->imagepath  = $path;
+
 
             $newProduct->save();
 

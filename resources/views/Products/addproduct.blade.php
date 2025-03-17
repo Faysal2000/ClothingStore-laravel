@@ -59,7 +59,11 @@
                                 <label for="image" class="form-label">Upload Image</label>
                                 <input type="file" required class="form-control-file" name="photo" id="photo "
                                     accept="image/*" value="{{ old('image') }}">
-
+                                <span class="text-danger">
+                                    @error('quantity')
+                                        {{ $photo }}
+                                    @enderror
+                                </span>
                             </div>
 
                             <div class="mb-3">
