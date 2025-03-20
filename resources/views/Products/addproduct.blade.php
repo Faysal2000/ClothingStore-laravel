@@ -19,7 +19,7 @@
                     </div>
                     <div id="form_status"></div>
                     <div class="contact-form">
-                        <form method="post" enctype="multipart/form-data" action="{{ url('/storeproduct') }}">
+                        <form method="post" enctype="multipart/form-data" action="{{ route('products.store') }}">
                             @csrf()
                             <div class="mb-3">
                                 <label for="name" class="form-label">Product Name</label>

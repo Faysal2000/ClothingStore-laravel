@@ -8,7 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Review;
 
-class FirstController extends Controller
+class CategoryController extends Controller
 {
 
 
@@ -18,6 +18,25 @@ class FirstController extends Controller
         $categories = Category::all();
         return view('welcome', ['categories' => $categories]);
     }
+
+
+
+    public function storeCategory(Request $request)
+    {
+        // التحقق من صحة البيانات قبل الحفظ
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'imagepath' => 'nullable|string|max:255',
+            'price' => 'required|numeric',
+        ]);
+
+        // استدعاء الدالة الجديدة داخل الموديل
+        Category::createCategory($validatedData);
+
+        return redirect()->back()->with('success', 'تمت إضافة الفئة بنجاح!');
+    }
+
 
 
     public function reviews()
@@ -39,13 +58,12 @@ class FirstController extends Controller
 
         ]);
 
-        $newReviw =  new Review();
-        $newReviw->name = $request->name;
-        $newReviw->subject = $request->subject;
-        $newReviw->message = $request->message;
-
-
-        $newReviw->save();
+        // لحفظ البيانات بشكل مباشر
+        Review::create([
+            'name' => $request->name,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ]);
         return redirect('/reviews');
     }
 

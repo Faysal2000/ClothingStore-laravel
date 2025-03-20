@@ -4,23 +4,6 @@
 @section('content')
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="container mt-5">
         <h2 class="text-center text-primary mb-4">Customer Testimonials</h2>
 
@@ -49,11 +32,6 @@
             @endif
 
         </div>
-
-
-
-
-
 
         <!-- Submit a Review -->
         <div class="card mt-4 p-4 shadow-sm">

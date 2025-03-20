@@ -8,13 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-
-    //العلاقة العكسية بين المنتج والفئة
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
+    const CREATED_AT = 'creation_date';
+    const UPDATED_AT = 'updated_date';
 
     protected $fillable = [
         'name',
@@ -23,4 +18,10 @@ class Product extends Model
         'quantity',
         'imagepath'
     ];
+
+    //العلاقة العكسية بين المنتج والفئة
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

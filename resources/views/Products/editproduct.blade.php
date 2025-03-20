@@ -19,7 +19,7 @@
                     </div>
                     <div id="form_status"></div>
                     <div class="contact-form">
-                        <form method="post" action="{{ url('/storeproduct') }}">
+                        <form method="post" enctype="multipart/form-data" action="{{ url('/storeproduct') }}">
                             @csrf()
                             <input type="hidden" style="width:100%" required placeholder="" name="id" id="id"
                                 value=" {{ $product->id }}">
@@ -64,6 +64,9 @@
 
                             </div>
 
+                            <p><img src="{{ asset($product->imagepath) }}" width="300" height="400" alt="">
+                            </p>
+
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea name="description" required id="description" class="form-control" rows="4"
@@ -76,8 +79,7 @@
                                     @enderror
                                 </span>
                             </div>
-                            <p><img src="{{ asset($product->imagepath) }}" width="300" height="400" alt="">
-                            </p>
+
 
                             <div class="mb-3">
                                 <label for="category" class="form-label fw-bold text-primary">Choose a Category</label>

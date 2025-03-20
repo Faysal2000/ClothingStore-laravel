@@ -20,7 +20,7 @@
                     <div class="col-lg-4 col-md-6 text-center">
                         <div class="single-product-item">
                             <div class="product-image">
-                                <a href="/product/{{ $item->id }}">
+                                <a href="{{ route('prods', ['catid' => $item->id]) }}">
                                     <img src="{{ url($item->imagepath) }}" style="max-height:400px;min-height:400px"
                                         alt=""></a>
                             </div>

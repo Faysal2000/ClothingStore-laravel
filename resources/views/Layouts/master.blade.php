@@ -67,11 +67,11 @@
                                 <li class="current-list-item"><a href="/">Home</a>
 
                                 </li>
-                                <li><a href="/category">Categories</a>
+                                <li><a href="{{ route('cats') }}">Categories</a>
 
                                 </li>
 
-                                <li><a href="/products">Products</a>
+                                <li><a href="{{ route('prods') }}">Products</a>
 
                                 </li>
 

@@ -2,108 +2,100 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Contracts\View\View;
 
 class ProductController extends Controller
 {
-
-
-    public function Addproduct()
+    // عرض جميع المنتجات
+    public function index()
     {
-        $allcategories = Category::all();
-        return view('Products.addproduct', ['allcategories' => $allcategories]);
+        $products = Product::all();
+        return view('Products.index', compact('products'));
     }
 
-
-
-
-    public function StoreProduct(Request $request)
+    // عرض صفحة إضافة منتج جديد
+    public function create()
     {
+        $allcategories = Category::all();
+        return view('Products.addproduct', compact('allcategories'));
+    }
 
+    // حفظ منتج جديد
+    public function store(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
-            'imagepath' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required|string',
         ]);
 
+        // رفع الصورة إذا كانت موجودة
+        $path = $request->hasFile('photo') ? $request->file('photo')->store('uploads', 'public') : null;
 
-        // حفظ القيم الجديدة بعد التعديل
-        if ($request->id) {
-            $currantProduct = Product::find($request->id);
-            $currantProduct->name = $request->name;
-            $currantProduct->price = $request->price;
-            $currantProduct->quantity = $request->quantity;
-            $currantProduct->description = $request->description;
-            $currantProduct->imagepath = $request->imagepath;
-            $currantProduct->category_id = $request->category_id;
+        // إنشاء المنتج
+        Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'imagepath' => $path,
+        ]);
 
-            $currantProduct->save();
-            return redirect('/products');
-        } else {
-
-
-
-            //اضافة منتج جديد
-            $newProduct = new Product();
-            $newProduct->name = $request->name;
-            $newProduct->price = $request->price;
-            $newProduct->quantity = $request->quantity;
-            $newProduct->descrition = $request->description;
-            $newProduct->category_id = $request->category_id;
-
-
-
-
-
-            //تحميل الصور الى المجلد في المسار المحدد
-            $path =   $request->photo->move('uploads', string::uuid()->toString() . '-' . $request->photo->getClientOriginalName());
-
-
-            $newProduct->imagepath  = $path;
-
-
-            $newProduct->save();
-
-            return redirect('/products');
-        }
+        return redirect()->route('products.index')->with('success', 'Product added successfully!');
     }
 
-
-    public function EditProduct($productid = null)
+    // عرض منتج معين
+    public function show($id)
     {
-
-        if ($productid != null) {
-
-            $currantProduct = Product::find($productid);
-            if ($currantProduct == null) {
-                abort("403", "Cant Find This Product");
-            }
-            $allcategories = Category::all();
-
-
-            return View('Products.editproduct', ["product" => $currantProduct, 'allcategories' => $allcategories]);
-        } else {
-            return redirect('/addproduct');
-        }
+        $product = Product::findOrFail($id);
+        return view('Products.show', compact('product'));
     }
 
-
-
-
-    public function RemoveProducts($productid = null)
+    // عرض صفحة تعديل المنتج
+    public function edit($id)
     {
-        if ($productid != null) {
-            $currantProduct = Product::find($productid);
-            $currantProduct->delete();
-            return redirect('/products');
-        } else {
-            abort(403, 'enter product id');
-        }
+        $product = Product::findOrFail($id);
+        $allcategories = Category::all();
+        return view('Products.editproduct', compact('product', 'allcategories'));
+    }
+
+    // تحديث بيانات المنتج
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'quantity' => 'required|integer',
+            'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string',
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        // تحديث بيانات المنتج
+        $product->update([
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'imagepath' => $request->hasFile('photo') ? $request->file('photo')->store('uploads', 'public') : $product->imagepath,
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Product updated successfully!');
+    }
+
+    // حذف المنتج
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
     }
 }
