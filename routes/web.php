@@ -12,7 +12,7 @@ use App\Models\Product;
 
 Auth::routes(['register' => true]);
 
-// الصفحة الرئيسية
+// الصفحة الرئيسية  
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [CategoryController::class, 'MainPage']);
 

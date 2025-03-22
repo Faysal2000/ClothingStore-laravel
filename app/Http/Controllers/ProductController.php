@@ -47,7 +47,7 @@ class ProductController extends Controller
             'imagepath' => $path, // تخزين مسار الصورة
         ]);
 
-        return redirect()->route('products.index')->with('success', 'تمت إضافة المنتج بنجاح!');
+        return redirect()->route('products.index')->with('success', 'Product added successfully!');
     }
 
 

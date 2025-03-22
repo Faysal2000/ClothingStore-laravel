@@ -85,7 +85,8 @@
                                 </li>
                                 </li>
 
-                                <li><a href="{{ route('products.store') }}">Add Product</a>
+                                <li><a href="{{ route('products.create') }}">Add Product</a></li>
+
 
                                 </li>
 
