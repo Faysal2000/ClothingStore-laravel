@@ -22,32 +22,34 @@ class ProductController extends Controller
         return view('Products.addproduct', compact('allcategories'));
     }
 
-    // حفظ منتج جديد
+    //  إنشاء منتج جديد
     public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
-            'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required|string',
+            'imagepath' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        // رفع الصورة إذا كانت موجودة
-        $path = $request->hasFile('photo') ? $request->file('photo')->store('uploads', 'public') : null;
+        // رفع الصورة إن وجدت
+        $path = $request->hasFile('imagepath') ? $request->file('imagepath')->store('uploads', 'public') : null;
 
-        // إنشاء المنتج
+        // إنشاء المنتج باستخدام Eloquent
         Product::create([
             'name' => $request->name,
             'price' => $request->price,
             'quantity' => $request->quantity,
             'description' => $request->description,
             'category_id' => $request->category_id,
-            'imagepath' => $path,
+            'imagepath' => $path, // تخزين مسار الصورة
         ]);
 
-        return redirect()->route('products.index')->with('success', 'Product added successfully!');
+        return redirect()->route('products.index')->with('success', 'تمت إضافة المنتج بنجاح!');
     }
+
 
     // عرض منتج معين
     public function show($id)
@@ -72,7 +74,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'imagepath' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required|string',
+            'description' => 'nullable|string',
         ]);
 
         $product = Product::findOrFail($id);

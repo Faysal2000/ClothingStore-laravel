@@ -6,10 +6,11 @@ use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
-Auth::routes();
+Auth::routes(['register' => true]);
 
 // الصفحة الرئيسية
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

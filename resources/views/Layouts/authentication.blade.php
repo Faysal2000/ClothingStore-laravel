@@ -55,7 +55,7 @@
     <!--PreLoader Ends-->
 
     <!-- header -->
-    <div class="top-header-area" id="sticker">
+    <div class="top-header-area" style="position:relative; background:#14142c" id="sticker">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-sm-12 text-center">
@@ -85,7 +85,7 @@
                                 </li>
                                 </li>
 
-                                <li><a href="{{ route('products.store') }}">Add Product</a>
+                                <li><a href="/addproduct">Add Product</a>
 
                                 </li>
 
@@ -180,68 +180,10 @@
     <!-- end search area -->
 
     <!-- home page slider -->
-    <div class="homepage-slider">
-        <!-- single home slider -->
-        <div class="single-homepage-slider homepage-bg-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-lg-7 offset-lg-1 offset-xl-0">
-                        <div class="hero-text">
-                            <div class="hero-text-tablecell">
-                                <p class="subtitle">Style that speaks for you! ✨</p>
-                                <h1>Shop the latest fashion trends now</h1>
-                                <div class="hero-btns">
-                                    <a href="shop.html" class="boxed-btn">Fruit Collection</a>
-                                    <a href="/contact" class="bordered-btn">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- single home slider -->
-        <div class="single-homepage-slider homepage-bg-2">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1 text-center">
-                        <div class="hero-text">
-                            <div class="hero-text-tablecell">
-                                <p class="subtitle">Exclusive deals and trendy outfits</p>
-                                <h1>because you deserve the best!</h1>
-                                <div class="hero-btns">
-                                    <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                    <a href="/contact" class="bordered-btn">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- single home slider -->
-        <div class="single-homepage-slider homepage-bg-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10 offset-lg-1 text-right">
-                        <div class="hero-text">
-                            <div class="hero-text-tablecell">
-                                <p class="subtitle">Don't miss the chance to renew your wardrobe.</p>
-                                <h1>Discounts up to 50%!</h1>
-                                <div class="hero-btns">
-                                    <a href="shop.html" class="boxed-btn">Visit Shop</a>
-                                    <a href="/contact" class="bordered-btn">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- end home page slider -->
 
-
+    <div style="height:500px"></div>
 
 
     @yield('content')
