@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -18,6 +19,8 @@ class ProductController extends Controller
     // عرض صفحة إضافة منتج جديد
     public function create()
     {
+
+
         $allcategories = Category::all();
         return view('Products.addproduct', compact('allcategories'));
     }

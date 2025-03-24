@@ -66,8 +66,21 @@
                         </div>
                     </div>
                 @endforeach
+
+                <div style="text-align:center; margin:0px auto">
+                    <!-- Pagination Links -->
+                    {{ $products->links() }}
+                </div>
             </div>
 
         </div>
     </div>
 @endsection
+
+
+<style>
+    svg {
+
+        height: 50px !important;
+    }
+</style>

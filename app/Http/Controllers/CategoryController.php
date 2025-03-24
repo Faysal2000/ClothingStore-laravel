@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\Paginator;
+
+
 
 class CategoryController extends Controller
 {
@@ -15,7 +19,11 @@ class CategoryController extends Controller
 
     public function MainPage()
     {
-        $categories = Category::all();
+        if (Auth::check()) {
+            $categories = Category::all();
+        } else {
+            $categories = Category::take(2)->get();
+        }
         return view('welcome', ['categories' => $categories]);
     }
 
@@ -73,10 +81,10 @@ class CategoryController extends Controller
     public function GetCategoryProducts($catid = null)
     {
         if ($catid) {
-            $products = Product::where('category_id', $catid)->get();
+            $products = Product::where('category_id', $catid)->paginate(6);
             return view('product', ['products' => $products]);
         } else {
-            $products = Product::all();
+            $products = Product::paginate(6);
             return view('product', ['products' => $products]);
         }
     }
