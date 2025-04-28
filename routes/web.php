@@ -13,7 +13,7 @@ use App\Models\Product;
 Auth::routes(['register' => true]);
 
 // الصفحة الرئيسية  
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [CategoryController::class, 'MainPage']);
 
 // عرض المنتجات حسب الفئة
@@ -31,6 +31,36 @@ Route::post('/storeReview', [CategoryController::class, 'storeReview'])->name('r
 
 // البحث عن المنتجات
 Route::post('/search', function (Request $request) {
-    $products = Product::where('name', 'like', '%' . $request->searchkey . '%')->get();
+    $products = Product::where('name', 'like', '%' . $request->searchkey . '%')->get()->paginate(6);
     return view('product', compact('products'));
 })->name('search');
+
+
+
+
+Route::get('/Products.ProductsTables', [ProductController::class, 'productsTable']);
+
+Route::get('/admin', [CategoryController::class, 'GetCategoryProducts']);
+
+
+
+
+
+Route::get('/admin/login', function () {
+    return "admin panel";
+});
+
+
+Route::get('/admin/index', function () {
+    return "admin panel";
+})->middleware('checkrole:admin');
+
+
+Route::get('/admin/chart', function () {
+    return "admin charts";
+})->middleware('checkrole:admin,salesman');
+
+
+Route::get('/admin/bills', function () {
+    return "admin bills";
+})->middleware('checkrole:salesman');

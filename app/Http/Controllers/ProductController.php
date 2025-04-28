@@ -103,4 +103,13 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully!');
     }
+
+
+    public function productsTable()
+    {
+        $products = Product::all();
+
+
+        return view('Products.ProductsTable', ['products' => $products]);
+    }
 }
